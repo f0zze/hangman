@@ -1,0 +1,33 @@
+.word {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    font-size: 35px;
+}
+
+.wordLetter {
+    font-size: 40px;
+    letter-spacing: 6px;
+    transition: all 0.3s;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+    opacity: 0;
+    animation: wrong 0.5s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes wrong {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

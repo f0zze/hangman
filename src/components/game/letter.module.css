@@ -1,0 +1,19 @@
+.letter {
+    width: 34px;
+    height: 34px;
+    margin: 1px;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.letter:hover {
+    cursor: pointer;
+    background-color: #dbe3ef;
+    font-size: 18px;
+}

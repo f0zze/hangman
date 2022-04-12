@@ -1,0 +1,17 @@
+.gameMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    top: 30%
+}
+
+.menuItem {
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menuBtn {
+    width: 200px;
+}

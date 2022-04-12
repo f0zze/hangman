@@ -1,0 +1,47 @@
+.gameResult {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    pointer-events: none;
+}
+
+.gameResult.show {
+    opacity: 1;
+}
+
+.gameResult.win {
+    backdrop-filter: blur(14px);
+}
+
+.gameResult.lose {
+    backdrop-filter: blur(14px);
+}
+
+.win .resultText {
+    color: #52d252;
+}
+
+.lose .resultText {
+    color: #da0926;
+}
+
+.resultText {
+    font-size: 100px;
+    font-family: 'Grape Nuts', cursive;
+    white-space: nowrap;
+}
+
+.result {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

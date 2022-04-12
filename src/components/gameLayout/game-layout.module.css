@@ -1,0 +1,23 @@
+.gameLayout {
+    max-width: 500px;
+    height: 650px;
+    padding: 40px;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: relative;
+    background-color: aliceblue;
+}
+
+.menu {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.link {
+    color: #61dafb;
+}
+
+.link:hover {
+    cursor: pointer;
+}
