@@ -1,3 +1,3 @@
-/**  TODO: create game history **/
+/**  TODO **/
 
 export class HistoryStore {}

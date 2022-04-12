@@ -1,9 +1,8 @@
 import classNames from "classnames";
-
 import {observer} from "mobx-react-lite";
+
 import {useGame} from "../../useGame";
 import styles from "./game-result.module.css";
-import {Button} from "../Button/Button";
 
 export const GameResult = observer(() => {
     const game = useGame();

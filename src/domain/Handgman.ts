@@ -1,5 +1,6 @@
-import {alphabet, Alphabet} from "./alphabet";
 import {makeAutoObservable} from "mobx";
+
+import {alphabet, Alphabet} from "./alphabet";
 import {Word} from "./Word";
 
 export type GameResult = "none" | "win" | "lose";
@@ -12,10 +13,11 @@ type HangmanConfig = {
 }
 
 export class Hangman {
-    private readonly maxWrongDecisions: number;
+
     public readonly alphabet = alphabet;
-    private readonly selectedLetters: Map<Alphabet, LetterStatus> = new Map();
     public readonly wordToGuess: Word;
+    private readonly selectedLetters: Map<Alphabet, LetterStatus> = new Map();
+    private readonly maxWrongDecisions: number;
 
     public constructor(config: HangmanConfig) {
         makeAutoObservable(this);
@@ -38,8 +40,6 @@ export class Hangman {
     }
 
     public get gameResult(): GameResult {
-        // console.log("letter size is ", this.selectedLetters.size)
-
         if (this.wrongLetterCount >= this.maxWrongDecisions) {
             return "lose";
         }
@@ -68,7 +68,7 @@ export class Hangman {
         return Math.min(count, this.maxWrongDecisions);
     }
 
-    private getStatusCount(statusToCount: LetterStatus) {
+    private getStatusCount(statusToCount: LetterStatus): number {
         let count = 0;
         this.selectedLetters.forEach((status) => {
             if (status === statusToCount) {

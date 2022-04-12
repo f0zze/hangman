@@ -1,9 +1,10 @@
 import {observer} from "mobx-react-lite";
+import classNames from "classnames";
+
 import {useGame} from "../../useGame";
 import {Alphabet} from "../../domain/alphabet";
 
 import styles from "./word.module.css";
-import classNames from "classnames";
 
 type WordLetterProps = {
     letter: Alphabet;

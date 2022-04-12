@@ -1,5 +1,6 @@
 import styles from "./game-layout.module.css";
 import {useGame} from "../../useGame";
+
 type GameLayoutProps = {
     children: JSX.Element;
     showMenuBtn?: boolean;
@@ -7,7 +8,9 @@ type GameLayoutProps = {
 
 export function GameLayout(props: GameLayoutProps) {
     const { children, showMenuBtn = true } = props;
+
     const game = useGame();
+
     return (
         <div className={styles.gameLayout}>
             <div className={styles.menu}>

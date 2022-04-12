@@ -1,4 +1,4 @@
-/* TODO: create preferences store */
+/* TODO */
 
 export class PreferenceStore {
     public constructor() {
