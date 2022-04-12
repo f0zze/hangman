@@ -8,17 +8,17 @@ describe("Hangman", () => {
         it("should return correct status when word contains selected letter", () => {
             hangman.selectLetter("T");
 
-            expect(hangman.getLetterStatus("T")).toBe("correct");
+            expect(hangman.getLetterStatus("T")).toEqual("correct");
         });
 
         it("should return wrong when selected word not contains letter  ", () => {
             hangman.selectLetter("P");
 
-            expect(hangman.getLetterStatus("P")).toBe("wrong");
+            expect(hangman.getLetterStatus("P")).toEqual("wrong");
         });
 
         it("should return notSelected by default", () => {
-            expect(hangman.getLetterStatus("J")).toBe("notSelected");
+            expect(hangman.getLetterStatus("J")).toEqual("notSelected");
         });
     });
 
@@ -39,7 +39,7 @@ describe("Hangman", () => {
 
             const gameResult: GameResult = "lose";
 
-            expect(hangman.gameResult).toBe(gameResult);
+            expect(hangman.gameResult).toEqual(gameResult);
         });
 
         it("should return game result win when selected all correct letters", () => {
@@ -50,7 +50,7 @@ describe("Hangman", () => {
 
             const gameResult: GameResult = "win";
 
-            expect(hangman.gameResult).toBe(gameResult);
+            expect(hangman.gameResult).toEqual(gameResult);
         });
     });
 
@@ -85,7 +85,17 @@ describe("Hangman", () => {
         });
 
         it("should return started when game instance created", () => {
-            expect(hangman.gameState).toBe("started");
+            expect(hangman.gameState).toEqual("started");
         });
+
+        it("should return finished when have game result", () => {
+            hangman.selectLetter("W");
+            hangman.selectLetter("O");
+            hangman.selectLetter("R");
+            hangman.selectLetter("L");
+            hangman.selectLetter("D");
+
+            expect(hangman.gameState).toEqual("finished");
+        })
     });
 });

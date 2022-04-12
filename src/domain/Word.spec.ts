@@ -2,32 +2,41 @@ import { Word } from "./Word";
 
 describe("Word", () => {
     describe("contains", () => {
-        it("should return true if letter within the word", () => {
+        it("should return true when word contains letter ", () => {
             const word = new Word("Test");
 
             expect(word.contains("T")).toBeTruthy();
             expect(word.contains("E")).toBeTruthy();
         });
 
-        it("should return false if letter not exists within the word", () => {
-            const word = new Word("Test");
+        it("should return false when word not conntains letter", () => {
+            const word = new Word("Hangman");
 
-            expect(word.contains("W")).toBeFalsy();
-            expect(word.contains("Y")).toBeFalsy();
-        });
+            expect(word.contains("O")).toBeFalsy();
+        })
+
     });
 
     describe("containsAllLetters", () => {
-        it("should return true if all letters within the word", () => {
-            const word = new Word("Test");
+        it("should return true when word contains all letters", () => {
+            const word = new Word("Hangman");
 
-            expect(word.containsAllLetters(["T", "E", "S", "T"])).toBeTruthy();
+            expect(word.containsAllLetters(["H", "A", "N", "G", "M", "A", "N"])).toBeTruthy();
         });
 
-        it("should return false if one of the letter not exists within the word", () => {
-            const word = new Word("Test");
+        it("should return false when word not contains all letters", () => {
+            const word = new Word("Hangman");
 
-            expect(word.containsAllLetters(["T", "S", "T"])).toBeFalsy();
+            expect(word.containsAllLetters(["H", "A", "N", "G", "M", "A"])).toBeTruthy();
+
         });
     });
+
+    describe("wordParts", () => {
+        it("should return word parts", () => {
+            const word = new Word("Hang Man");
+
+            expect(word.wordParts).toEqual([["H", "a", "n", "g"], ["M", "a", "n"]])
+        })
+    })
 });

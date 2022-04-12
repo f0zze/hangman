@@ -7,6 +7,7 @@ export class Word {
     constructor(public readonly word: string) {
         const wordParts = word.split(" ");
         this.chars = word.toUpperCase().split("").filter(Boolean) as unknown as Alphabet[];
+
         this.wordParts = wordParts.map((part) => part.split(""));
     }
 
