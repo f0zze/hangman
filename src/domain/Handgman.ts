@@ -1,19 +1,18 @@
-import {makeAutoObservable} from "mobx";
+import { makeAutoObservable } from "mobx";
 
-import {alphabet, Alphabet} from "./alphabet";
-import {Word} from "./Word";
+import { alphabet, Alphabet } from "./alphabet";
+import { Word } from "./Word";
 
 export type GameResult = "none" | "win" | "lose";
-export type GameState = "idle" | "started" | "finished";
+export type GameState = "started" | "finished";
 export type LetterStatus = "correct" | "wrong" | "notSelected";
 
 type HangmanConfig = {
     maxWrongDecisions?: number;
     word: string;
-}
+};
 
 export class Hangman {
-
     public readonly alphabet = alphabet;
     public readonly wordToGuess: Word;
     private readonly selectedLetters: Map<Alphabet, LetterStatus> = new Map();
@@ -22,7 +21,7 @@ export class Hangman {
     public constructor(config: HangmanConfig) {
         makeAutoObservable(this);
 
-        const {maxWrongDecisions = 7, word} = config;
+        const { maxWrongDecisions = 7, word } = config;
 
         this.wordToGuess = new Word(word);
         this.maxWrongDecisions = maxWrongDecisions;
@@ -59,11 +58,11 @@ export class Hangman {
         if (this.gameResult !== "none") {
             return "finished";
         }
-        return this.wordToGuess !== undefined ? "started" : "idle";
+        return "started";
     }
 
     public get wrongLetterCount(): number {
-        const count = this.getStatusCount("wrong")
+        const count = this.getStatusCount("wrong");
 
         return Math.min(count, this.maxWrongDecisions);
     }
@@ -74,7 +73,7 @@ export class Hangman {
             if (status === statusToCount) {
                 count++;
             }
-        })
+        });
         return count;
     }
 
@@ -82,5 +81,3 @@ export class Hangman {
         return this.wordToGuess.contains(letter) ? "correct" : "wrong";
     }
 }
-
-

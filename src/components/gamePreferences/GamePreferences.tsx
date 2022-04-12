@@ -1,11 +1,9 @@
-import {GameLayout} from "../gameLayout/GameLayout";
+import { GameLayout } from "../gameLayout/GameLayout";
 
 export function GamePreferences() {
     return (
         <GameLayout>
-            <div>
-                Game Preference
-            </div>
+            <div>Game Preference</div>
         </GameLayout>
-    )
+    );
 }

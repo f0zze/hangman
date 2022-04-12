@@ -26,5 +26,5 @@ export const alphabet = [
     "W",
     "X",
     "Y",
-    "Z"
+    "Z",
 ] as const;

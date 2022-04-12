@@ -1,11 +1,9 @@
-import {GameLayout} from "../gameLayout/GameLayout";
+import { GameLayout } from "../gameLayout/GameLayout";
 
 export function GameHistory() {
     return (
         <GameLayout>
-            <div>
-                Game History
-            </div>
+            <div>Game History</div>
         </GameLayout>
-    )
+    );
 }

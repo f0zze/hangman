@@ -1,10 +1,9 @@
-import {makeAutoObservable, when} from "mobx";
-import {Hangman} from "../domain/Handgman";
+import { makeAutoObservable, when } from "mobx";
+import { Hangman } from "../domain/Handgman";
 
-import {fetchWord} from "../service";
+import { fetchWord } from "../service";
 
 export type GameView = "menu" | "game" | "history" | "preferences" | "result";
-
 
 export class GameStore {
     private _currentView: GameView = "menu";
@@ -19,20 +18,27 @@ export class GameStore {
     }
 
     public start() {
-        fetchWord().then(word => {
+        fetchWord().then((word) => {
             const hangman = new Hangman({
-                word, maxWrongDecisions: 7
-            })
+                word,
+                maxWrongDecisions: 7,
+            });
             this._hangman = hangman;
-            
-            when(() => hangman.gameState === "finished", () => {
-                setTimeout(() => {
-                    this.goTo("result")
-                    setTimeout(() => {
-                        this.goTo("menu")
-                    }, 2000)
-                }, hangman.gameResult === "lose" ? 3000 : 1000);
-            })
+
+            when(
+                () => hangman.gameState === "finished",
+                () => {
+                    setTimeout(
+                        () => {
+                            this.goTo("result");
+                            setTimeout(() => {
+                                this.goTo("menu");
+                            }, 2000);
+                        },
+                        hangman.gameResult === "lose" ? 3000 : 1000
+                    );
+                }
+            );
             this.goTo("game");
         });
     }
@@ -53,7 +59,6 @@ export class GameStore {
         return this._currentView;
     }
 }
-
 
 export function createGameStore() {
     return new GameStore();

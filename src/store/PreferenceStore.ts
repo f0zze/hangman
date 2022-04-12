@@ -1,6 +1,5 @@
 /* TODO */
 
 export class PreferenceStore {
-    public constructor() {
-    }
+    public constructor() {}
 }

@@ -5,8 +5,8 @@ import { observer } from "mobx-react-lite";
 import styles from "./letter.module.css";
 
 type LetterProps = {
-    letter: Alphabet
-}
+    letter: Alphabet;
+};
 
 export const Letter = observer((props: LetterProps) => {
     const { letter } = props;
@@ -17,5 +17,5 @@ export const Letter = observer((props: LetterProps) => {
         <div className={styles.letter} onClick={() => hangman.selectLetter(letter)}>
             {hangman.isSelected(letter) ? "" : letter}
         </div>
-    )
+    );
 });

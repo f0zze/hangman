@@ -3,8 +3,7 @@ interface Drawable {
 }
 
 class RightHand implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(200, 190);
@@ -16,8 +15,7 @@ class RightHand implements Drawable {
 }
 
 class LeftHand implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(200, 190);
@@ -29,8 +27,7 @@ class LeftHand implements Drawable {
 }
 
 class RightLeg implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(200, 350);
@@ -42,8 +39,7 @@ class RightLeg implements Drawable {
 }
 
 class LeftLeg implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(200, 350);
@@ -54,8 +50,7 @@ class LeftLeg implements Drawable {
 }
 
 class Stick implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(20, ctx.canvas.height);
@@ -69,8 +64,7 @@ class Stick implements Drawable {
 }
 
 class Body implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.moveTo(200, 170);
@@ -82,8 +76,7 @@ class Body implements Drawable {
 }
 
 class Head implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
@@ -93,8 +86,7 @@ class Head implements Drawable {
 }
 
 class Stand implements Drawable {
-    public constructor(private game: HangmanCanvas) {
-    }
+    public constructor() {}
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
@@ -102,7 +94,7 @@ class Stand implements Drawable {
         ctx.lineTo(40, ctx.canvas.height);
         ctx.lineWidth = 5;
         ctx.stroke();
-        ctx.closePath()
+        ctx.closePath();
     }
 }
 
@@ -117,19 +109,19 @@ export class HangmanCanvas {
     private stand: Stand;
 
     private toDisplay: Set<Drawable> = new Set();
-    private drawOrder: Map<number, Drawable> = new Map<number, Drawable>()
+    private drawOrder: Map<number, Drawable> = new Map<number, Drawable>();
 
     constructor(public width: number, public height: number) {
-        this.head = new Head(this);
-        this.stick = new Stick(this);
-        this.body = new Body(this);
-        this.rightHand = new RightHand(this);
-        this.leftHand = new LeftHand(this);
+        this.head = new Head();
+        this.stick = new Stick();
+        this.body = new Body();
+        this.rightHand = new RightHand();
+        this.leftHand = new LeftHand();
 
-        this.leftLeg = new LeftLeg(this);
-        this.rightLeg = new RightLeg(this);
+        this.leftLeg = new LeftLeg();
+        this.rightLeg = new RightLeg();
 
-        this.stand = new Stand(this);
+        this.stand = new Stand();
 
         this.drawOrder.set(1, this.head);
         this.drawOrder.set(2, this.body);
@@ -169,9 +161,9 @@ export function createCanvasGame(canvas: HTMLCanvasElement) {
 
     function dispose() {
         if (rafId) {
-            window.cancelAnimationFrame(rafId)
+            window.cancelAnimationFrame(rafId);
         }
     }
 
-    return {hangmanCanvas, dispose};
+    return { hangmanCanvas, dispose };
 }
